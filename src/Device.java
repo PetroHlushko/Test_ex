@@ -1,3 +1,6 @@
+import java.util.Comparator;
+import java.util.Objects;
+
 public class Device {
     private long serialNumber;
     private String brand;
@@ -10,6 +13,8 @@ public class Device {
         this.info = info;
         this.prise = prise;
     }
+
+
 
     public long getSerialNumber() {
         return serialNumber;
@@ -42,4 +47,37 @@ public class Device {
     public void setPrise(int prise) {
         this.prise = prise;
     }
+
+
+
+
+
+    @Override
+    public String toString() {
+        return "Device{" +
+                "serialNumber=" + serialNumber +
+                ", brand='" + brand + '\'' +
+                ", info='" + info + '\'' +
+                ", prise=" + prise +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Device device = (Device) o;
+        return serialNumber == device.serialNumber &&
+                prise == device.prise &&
+                Objects.equals(brand, device.brand) &&
+                Objects.equals(info, device.info);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serialNumber, brand, info, prise);
+    }
+
+
+
 }
